@@ -1,0 +1,7 @@
+dataset-root: /Dataset
+catalog-dir: /data/catalog
+eval-gt-dir: /data/gt
+log-dir: ./logs
+ll-config: ./config/ll-config.yaml
+viz-start: 0
+viz-freq: 100
