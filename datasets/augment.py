@@ -15,7 +15,7 @@ class AirAugment(nn.Module):
         self.img_size = (np.array(size) * scale).round().astype(np.int32)
         self.resize_totensor = T.Compose([T.Resize(self.img_size.tolist()), np.array, T.ToTensor()])
         self.rand_crop = T.RandomResizedCrop(self.img_size.tolist(), scale=(0.1, 1.0))
-        self.rand_rotate = T.RandomRotation(45, interpolation=Image.BILINEAR)
+        self.rand_rotate = T.RandomRotation(45, resample=Image.BILINEAR)
         self.rand_color = T.ColorJitter(0.8, 0.8, 0.8)
         self.p = [1, 0, 0, 0] if resize_only else [0.25]*4
 
