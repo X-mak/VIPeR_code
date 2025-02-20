@@ -18,7 +18,7 @@ cd VIPeR_code
 2. Install dependencies
 
 ```
-conda env create --file environment.yml
+conda env create --file environment.yaml
 conda activate viper
 ```
 
@@ -82,6 +82,10 @@ Extra options*:
 * `--aggregator <gem/vlad>`: the aggregator used by the model.
 
 See main_single.py for more settings.
+
+**Model**
+
+We also provide pre-trained models [here](https://drive.google.com/drive/folders/1HjR3O8qwlRWcdqMQbP3AleIkFnV5H7G2?usp=drive_link), which include three datasets (Nordland, RobotCar, TartanAir) and models trained in various environments for each dataset. The backbone of these models is VGG-19, and the aggregator is NetVLAD.
 
 ## Citation
 
