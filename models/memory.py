@@ -195,7 +195,7 @@ class Memory():
 
 class TartanAirMemory(Memory):
 
-    def __init__(self, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, n_probe=1200, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, capacity=Memory.MAX_CAP, current_mem=Memory.MAX_CAP, longterm_mem=Memory.MAX_CAP, n_probe=1200, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         TARTANAIR_SPEC = {
             'pos': {'shape': (n_probe, 3), 'default': np.nan, 'device': out_device},
             'img': {'shape': (3,) + img_size, 'default': np.nan},
@@ -218,7 +218,7 @@ class TartanAirMemory(Memory):
 
 class NordlandMemory(Memory):
 
-    def __init__(self, window=5, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, window=5, capacity=Memory.MAX_CAP, current_mem=Memory.MAX_CAP, longterm_mem=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         NORDLAND_SPEC = {
             'img': {'shape': (3,) + img_size, 'default': np.nan},
             'offset': {'shape': (), 'dtype': torch.int, 'default': -1},
@@ -236,7 +236,7 @@ class NordlandMemory(Memory):
 
 class RobotCarMemory(Memory):
 
-    def __init__(self, dist_tol=20, head_tol=15, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, dist_tol=20, head_tol=15, capacity=Memory.MAX_CAP, current_mem=Memory.MAX_CAP, longterm_mem=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         ROBOTCAR_SPEC = {
             'img': {'shape': (3,) + img_size, 'default': np.nan},
             'location': {'shape': (2,), 'dtype': torch.float64, 'default': np.nan},
@@ -257,7 +257,7 @@ class RobotCarMemory(Memory):
 
 
 class CrossMemory(Memory):
-    def __init__(self, dataset, current_data, head_tol=15, n_probe=1200, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, dataset, current_data, head_tol=15, n_probe=1200, capacity=Memory.MAX_CAP, current_mem=Memory.MAX_CAP, longterm_mem=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
 
 
         self.head_tol = head_tol
