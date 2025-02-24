@@ -11,8 +11,7 @@ from main_single import run
 import torch
 import random
 import numpy as np
-# 1.单场景 ok 2.多场景 ok 3.dino
-# 0 airloop+cross 1 viper+cross
+
 def set_random_seed(seed):
     os.environ['PYTHONHASHSEED'] = str(seed)
     torch.manual_seed(seed)  # set CPU seed

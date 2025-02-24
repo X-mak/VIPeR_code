@@ -18,20 +18,20 @@ class MemReplayLoss():
         self.writer, self.counter, self.viz_start, self.viz_freq = writer, counter, viz_start, viz_freq
         self.viz = Visualizer('tensorboard', writer=self.writer)
         if args.cross:
-            self.memory = CrossMemory(dataset=args.all_data, current_data=args.dataset, capacity=args.mem_size)
+            self.memory = CrossMemory(dataset=args.all_data, current_data=args.dataset, capacity=args.mem_size, current_mem=args.current_mem_size, longterm_mem=args.longterm_mem_size)
         elif args.dataset == 'tartanair':
-            self.memory = TartanAirMemory(capacity=args.mem_size, n_probe=1200, out_device=args.device)
+            self.memory = TartanAirMemory(capacity=args.mem_size, n_probe=1200, out_device=args.device, current_mem=args.current_mem_size, longterm_mem=args.longterm_mem_size)
         elif args.dataset == 'nordland':
-            self.memory = NordlandMemory(capacity=args.mem_size, out_device=args.device)
+            self.memory = NordlandMemory(capacity=args.mem_size, out_device=args.device, current_mem=args.current_mem_size, longterm_mem=args.longterm_mem_size)
         elif args.dataset == 'robotcar':
-            self.memory = RobotCarMemory(capacity=args.mem_size, dist_tol=20, head_tol=15, out_device=args.device)
+            self.memory = RobotCarMemory(capacity=args.mem_size, dist_tol=20, head_tol=15, out_device=args.device, current_mem=args.current_mem_size, longterm_mem=args.longterm_mem_size)
 
         self.n_triplet, self.n_recent, self.pos_pair, self.neg_pair, self.n_pair = 4, 0, 1, 5, 1
         self.min_sample_size = 32
         if not args.memory:
-            self.neg_pair = 1
             self.memory.capacity, self.memory.current_cap, self.memory.eternal_cap = 1000, 0, 0
-
+        if args.method == 'airloop':
+            self.neg_pair = 1
         self.gd_match = GlobalDescMatchLoss(n_triplet=self.n_triplet, pos_pair=self.pos_pair, neg_pair=self.neg_pair, writer=writer, viz=self.viz, viz_start=viz_start, viz_freq=viz_freq, counter=self.counter)
         self.ll_loss = get_ll_loss(args, writer=writer, viz=self.viz, viz_start=viz_start, viz_freq=viz_freq, counter=self.counter)
         self.prev_gd = 0

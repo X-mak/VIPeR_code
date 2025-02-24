@@ -98,7 +98,6 @@ def main(args):
     if args.devices is None:
         args.devices = ['cuda:%d' % i for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else ['cpu']
     args.device = args.devices[0]
-    #aggregator = NetVLADLoupe(1536, 17*22, 64, 1024, False, True, False).to(args.device)
     if args.backbone == 'dinov2':
         model = NetVLADLoupe(1536, 17 * 22, 64, 1024, False, True, False).to(args.device)
     elif args.backbone == 'vgg':
@@ -168,6 +167,8 @@ def run(args=None):
     parser.add_argument("--w-decay", type=float, default=0, help="Weight decay of optim")
     parser.add_argument("--epoch", type=int, default=15, help="Number of epoches")
     parser.add_argument("--mem-size", type=int, default=400, help="Memory size")
+    parser.add_argument("--current-mem-size", type=int, default=400, help="Memory size")
+    parser.add_argument("--longterm-mem-size", type=int, default=200, help="Memory size")
     parser.add_argument("--log-dir", type=str, default=None, help="Tensorboard Log dir")
     parser.add_argument("--viz-start", type=int, default=np.inf, help='Visualize starting from iteration')
     parser.add_argument("--viz-freq", type=int, default=1, help='Visualize every * iteration(s)')

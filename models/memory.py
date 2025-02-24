@@ -12,13 +12,13 @@ class Memory():
     STATE_DICT = ['swap_dir', 'out_device', 'capacity', 'current_cap', 'eternal_cap', 'current_num', 'eternal_num', 'n_frame',
                   'n_frame_hist', 'property_spec', '_states', '_store', '_rel', 'cutoff', 'steps']
 
-    def __init__(self, property_spec, capacity=MAX_CAP, swap_dir='./memory', out_device='cuda'):
+    def __init__(self, property_spec, capacity=MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, swap_dir='./memory', out_device='cuda'):
         super().__init__()
         self.swap_dir = swap_dir
         self.out_device = out_device
         self.capacity = capacity
-        self.current_cap = 400
-        self.eternal_cap = 200
+        self.current_cap = current_mem
+        self.eternal_cap = longterm_mem
         self.current_num = 0
         self.eternal_num = 0
 
@@ -195,7 +195,7 @@ class Memory():
 
 class TartanAirMemory(Memory):
 
-    def __init__(self, capacity=Memory.MAX_CAP, n_probe=1200, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, n_probe=1200, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         TARTANAIR_SPEC = {
             'pos': {'shape': (n_probe, 3), 'default': np.nan, 'device': out_device},
             'img': {'shape': (3,) + img_size, 'default': np.nan},
@@ -203,7 +203,7 @@ class TartanAirMemory(Memory):
             'K': {'shape': (3, 3), 'default': np.nan},
             'depth_map': {'shape': (1,) + img_size, 'default': np.nan},
         }
-        super().__init__(TARTANAIR_SPEC, capacity, swap_dir, out_device)
+        super().__init__(TARTANAIR_SPEC, capacity, current_mem, longterm_mem, swap_dir, out_device)
         self.STATE_DICT.append('n_probe')
 
         self.n_probe = n_probe
@@ -218,12 +218,12 @@ class TartanAirMemory(Memory):
 
 class NordlandMemory(Memory):
 
-    def __init__(self, window=5, capacity=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, window=5, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         NORDLAND_SPEC = {
             'img': {'shape': (3,) + img_size, 'default': np.nan},
             'offset': {'shape': (), 'dtype': torch.int, 'default': -1},
         }
-        super().__init__(NORDLAND_SPEC, capacity, swap_dir, out_device)
+        super().__init__(NORDLAND_SPEC, capacity, current_mem, longterm_mem, swap_dir, out_device)
         self.STATE_DICT.append('cutoff')
         self.cutoff = [1 / (window + 0.5), 1 / (window + 0.5)] #0.18
 
@@ -236,13 +236,13 @@ class NordlandMemory(Memory):
 
 class RobotCarMemory(Memory):
 
-    def __init__(self, dist_tol=20, head_tol=15, capacity=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, dist_tol=20, head_tol=15, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
         ROBOTCAR_SPEC = {
             'img': {'shape': (3,) + img_size, 'default': np.nan},
             'location': {'shape': (2,), 'dtype': torch.float64, 'default': np.nan},
             'heading': {'shape': (), 'default': np.nan},
         }
-        super().__init__(ROBOTCAR_SPEC, capacity, swap_dir, out_device)
+        super().__init__(ROBOTCAR_SPEC, capacity, current_mem, longterm_mem, swap_dir, out_device)
         self.STATE_DICT.extend(['cutoff', 'head_tol'])
         self.head_tol = head_tol
         self.cutoff = [1 / (dist_tol * 2 + 1), 1 / (dist_tol + 1)]
@@ -257,7 +257,7 @@ class RobotCarMemory(Memory):
 
 
 class CrossMemory(Memory):
-    def __init__(self, dataset, current_data, head_tol=15, n_probe=1200, capacity=Memory.MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
+    def __init__(self, dataset, current_data, head_tol=15, n_probe=1200, capacity=Memory.MAX_CAP, current_mem=MAX_CAP, longterm_mem=MAX_CAP, img_size=(240, 320), swap_dir='./memory', out_device='cuda'):
 
 
         self.head_tol = head_tol
@@ -286,7 +286,7 @@ class CrossMemory(Memory):
                 'depth_map': {'shape': (1,) + img_size, 'default': np.nan},
             })
             # self.STATE_DICT.append('n_probe')
-        super().__init__(PROPERTY_SPEC, capacity, swap_dir, out_device)
+        super().__init__(PROPERTY_SPEC, capacity, current_mem, longterm_mem, swap_dir, out_device)
         self.data_belong = torch.full((capacity + self.current_cap + self.eternal_cap,), -1)
 
     def sample_frames(self, n_anchor, n_recent=0, pos_pair=2, neg_pair=6, n_try=10):
