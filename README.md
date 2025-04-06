@@ -2,7 +2,7 @@
 
 ### [Paper](https://ieeexplore.ieee.org/document/10873856) | [arXiv](https://arxiv.org/abs/2407.21416) | [Website](https://x-mak.github.io/VIPeR/)
 
-> SLC<sup>2</sup>-SLAM: Semantic-guided Loop Closure using Shared Latent Code for NeRF SLAM <br />
+> VIPeR: Visual Incremental Place Recognition With Adaptive Mining and Continual Learning <br />
 > [Yuhang Ming](https://yuhangming.github.io/), [Minyang Xu](), [Xingrui Yang](), [Weicai Ye](), [Weihan Wang](), [Yong Peng](), [Weichen Dai](), [Wanzeng Kong](https://faculty.hdu.edu.cn/zzb/kwz/main.htm)<br />
 > RA-L 2025
 
