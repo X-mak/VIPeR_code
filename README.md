@@ -1,6 +1,12 @@
 # VIPeR
 
-This repo contains the cource code for paper:
+### [Paper](https://ieeexplore.ieee.org/document/10873856) | [arXiv](https://arxiv.org/abs/2407.21416) | [Website](https://x-mak.github.io/VIPeR/)
+
+> SLC<sup>2</sup>-SLAM: Semantic-guided Loop Closure using Shared Latent Code for NeRF SLAM <br />
+> [Yuhang Ming](https://yuhangming.github.io/), [Minyang Xu](), [Xingrui Yang](), [Weicai Ye](), [Weihan Wang](), [Yong Peng](), [Weichen Dai](), [Wanzeng Kong](https://faculty.hdu.edu.cn/zzb/kwz/main.htm)<br />
+> RA-L 2025
+
+This repo contains the source code for paper:
 
 "[VIPeR: Visual Incremental Place Recognition with Adaptive Mining and Continual Learning.](https://arxiv.org/pdf/2407.21416)"IEEE Robotics and Automation Letters(RAL)
 
@@ -97,10 +103,9 @@ If you find our work helpful, please consider citing:
   journal={IEEE Robotics and Automation Letters}, 
   title={VIPeR: Visual Incremental Place Recognition with Adaptive Mining and Continual Learning}, 
   year={2025},
-  volume={},
-  number={},
-  pages={1-8},
-  keywords={Continuing education;Visualization;Training;Measurement;Atmospheric modeling;Adaptation models;Computational modeling;Data mining;Probabilistic logic;Image recognition;Localization;Recognition;Continual Learning},
+  volume={10},
+  number={3},
+  pages={3038-3045},
   doi={10.1109/LRA.2025.3539093}}
 ```
 
