@@ -6,9 +6,12 @@
 > [Yuhang Ming](https://yuhangming.github.io/), [Minyang Xu](), [Xingrui Yang](), [Weicai Ye](), [Weihan Wang](), [Yong Peng](), [Weichen Dai](), [Wanzeng Kong](https://faculty.hdu.edu.cn/zzb/kwz/main.htm)<br />
 > RA-L 2025
 
-This repo contains the source code for paper:
+<p align="center">
+    <img src="https://github.com/X-mak/VIPeR_code/blob/main/assets/images/overivew.png" width="800">
+</p>
 
-"[VIPeR: Visual Incremental Place Recognition with Adaptive Mining and Continual Learning.](https://arxiv.org/pdf/2407.21416)"IEEE Robotics and Automation Letters(RAL)
+
+<p>This repository contains the code for the paper VIPeR: Visual Incremental Place Recognition With Adaptive Mining and Continual Learning.</p>
 
 ## Usage
 
