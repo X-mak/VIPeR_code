@@ -7,7 +7,7 @@
 > RA-L 2025
 
 <p align="center">
-    <img src="https://github.com/X-mak/VIPeR_code/tree/main/assets/images/overivew.png" width="800">
+    <img src="https://github.com/X-mak/VIPeR_code/blob/main/assets/images/overview.png" width="800">
 </p>
 
 
