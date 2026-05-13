@@ -174,7 +174,7 @@ def run(args=None):
     parser.add_argument("--viz-freq", type=int, default=1, help='Visualize every * iteration(s)')
     parser.add_argument('--memory-path', type=str, default="./run/memory.pth")
     # evaluation
-    parser.add_argument("--eval-split-seed", type=int, default=5, help='Seed for splitting the dataset')
+    parser.add_argument("--eval-split-seed", type=int, default=59, help='Seed for splitting the dataset')
     parser.add_argument("--eval-percentage", type=float, default=0.2, help='Percentage of sequences for eval')
     parser.add_argument("--eval-save", type=str, help='Raw evaluation result save path')
     parser.add_argument("--eval-desc-save", type=str, help='Generated global descriptor save path')

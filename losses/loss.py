@@ -56,7 +56,7 @@ class MemReplayLoss():
 
         img = recombine('img', ank_batch, pos_batch, neg_batch)
         top_thres = 0.05
-        if self.args.dataset == 'nordland':top_thres = 0.08
+        if self.args.dataset == 'nordland':top_thres = 0.1
         low_thres = 0.03
         loss = 0
         if self.backbone == 'vgg':
